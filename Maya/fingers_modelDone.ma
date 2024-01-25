@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: fingers_modelDone.ma
-//Last modified: Thu, Jan 25, 2024 10:13:49 AM
+//Last modified: Thu, Jan 25, 2024 10:18:14 AM
 //Codeset: 1252
 requires maya "2023";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.2.1.1";
@@ -10,7 +10,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202211021031-847a9f9623";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "B3BD4C64-4299-84DE-71D0-A78B45B453FA";
+fileInfo "UUID" "79F02B17-4738-9215-17A0-428BC64072E2";
 createNode transform -n "finger_01_knuckle_01_geo";
 	rename -uid "D0E4C5AD-472E-45D1-5F8E-3DA5461E9304";
 	addAttr -is true -ci true -k true -sn "currentUVSet" -ln "currentUVSet" -dt "string";
@@ -965,13 +965,13 @@ createNode mesh -n "finger_05_knuckle_01_geoShapeOrig" -p "finger_05_knuckle_01_
 createNode transform -s -n "persp";
 	rename -uid "2B9BF310-4D3E-849B-39DC-9EA1D6EAFAAB";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -2.1878518696378899 22.788002408069577 -12.218544269522699 ;
+	setAttr ".t" -type "double3" -3.7081567988620678 28.832784006727028 -16.179074015643582 ;
 	setAttr ".r" -type "double3" -54.938352729380924 -158.99999999999466 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "7AEB2D5C-4F2B-8995-F82E-0AB6F694546A";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 24.378916788325348;
+	setAttr ".coi" 31.763800505974473;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
