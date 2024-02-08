@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
-//Name: RobotArm_rig02.ma
-//Last modified: Wed, Feb 07, 2024 06:21:54 PM
+//Name: RobotArm_rig03.ma
+//Last modified: Wed, Feb 07, 2024 06:27:22 PM
 //Codeset: 1252
 requires maya "2023";
 requires "stereoCamera" "10.0";
@@ -12,12 +12,12 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202211021031-847a9f9623";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 22631)";
-fileInfo "UUID" "2C7663AA-4039-F874-FAC8-0DAE71E817DC";
+fileInfo "UUID" "4778727B-4EE5-8A9C-51DB-DC9CFE8FD1CF";
 createNode transform -s -n "persp";
 	rename -uid "50C74C34-4BB7-C9A3-10B4-9590F43B0D27";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 30.581796106371726 20.98652495388891 4.0617360562548237 ;
-	setAttr ".r" -type "double3" -32.399999999999906 86.799999999995734 -5.6977229149389342e-14 ;
+	setAttr ".t" -type "double3" -22.347636062342556 18.194273567229217 12.161803003014857 ;
+	setAttr ".r" -type "double3" -29.400000000000603 -65.999999999999929 0 ;
 	setAttr ".rpt" -type "double3" -3.0393016220636755e-15 3.4900638936589434e-15 2.6112214149141952e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "416F1343-413C-0A06-37AE-039DE90FCE89";
@@ -11593,9 +11593,9 @@ createNode poseInterpolatorManager -n "poseInterpolatorManager";
 	rename -uid "A64D14F5-4C5D-0993-84B9-AD99757B6C3E";
 createNode displayLayerManager -n "layerManager";
 	rename -uid "37A9CC78-40E6-46A2-B4D2-91817B5136B8";
-	setAttr ".cdl" 2;
-	setAttr -s 3 ".dli[1:2]"  1 2;
-	setAttr -s 3 ".dli";
+	setAttr ".cdl" 3;
+	setAttr -s 4 ".dli[1:3]"  1 2 3;
+	setAttr -s 4 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "FB78E986-47D1-6B72-AD9A-9081DBFD2587";
 	setAttr ".ufem" -type "stringArray" 0  ;
@@ -11850,6 +11850,10 @@ createNode displayLayer -n "SkeletonLayer";
 	setAttr ".v" no;
 	setAttr ".ufem" -type "stringArray" 0  ;
 	setAttr ".do" 2;
+createNode displayLayer -n "ControlsLayer";
+	rename -uid "DB743DA5-433C-001F-D4EF-9F87A9FE0C0D";
+	setAttr ".ufem" -type "stringArray" 0  ;
+	setAttr ".do" 3;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -av -cb on ".ihi";
@@ -13186,6 +13190,33 @@ connectAttr "cog_jnt.pim" "cog_jnt_scaleConstraint1.cpim";
 connectAttr "cog_ctrl.s" "cog_jnt_scaleConstraint1.tg[0].ts";
 connectAttr "cog_ctrl.pm" "cog_jnt_scaleConstraint1.tg[0].tpm";
 connectAttr "cog_jnt_scaleConstraint1.w0" "cog_jnt_scaleConstraint1.tg[0].tw";
+connectAttr "ControlsLayer.di" "Controls.do";
+connectAttr "ControlsLayer.di" "transform_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "transform_ctrl.do";
+connectAttr "ControlsLayer.di" "cog_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "cog_ctrl.do";
+connectAttr "ControlsLayer.di" "base_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "base_ctrl.do";
+connectAttr "ControlsLayer.di" "extender1_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "extender1_ctrl.do";
+connectAttr "ControlsLayer.di" "hinge_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "hinge_ctrl.do";
+connectAttr "ControlsLayer.di" "extender2_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "extender2_ctrl.do";
+connectAttr "ControlsLayer.di" "scoop_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "scoop_ctrl.do";
+connectAttr "ControlsLayer.di" "r_finger_high_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "r_finger_high_ctrl.do";
+connectAttr "ControlsLayer.di" "r_finger_hinge_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "r_finger_hinge_ctrl.do";
+connectAttr "ControlsLayer.di" "m_finger_high_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "m_finger_high_ctrl.do";
+connectAttr "ControlsLayer.di" "m_finger_hinge_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "m_finger_hinge_ctrl.do";
+connectAttr "ControlsLayer.di" "L_finger_high_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "L_finger_high_ctrl.do";
+connectAttr "ControlsLayer.di" "L_finger_hinge_ctrl_grp.do";
+connectAttr "ControlsLayer.di" "L_finger_hinge_ctrl.do";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "blinn1SG.message" ":defaultLightSet.message";
@@ -13297,6 +13328,7 @@ connectAttr "groupId142.id" "cluster5GroupParts.gi";
 connectAttr "m_finger_low_geoShapeOrig.w" "cluster12GroupParts.ig";
 connectAttr "groupId143.id" "cluster12GroupParts.gi";
 connectAttr "layerManager.dli[2]" "SkeletonLayer.id";
+connectAttr "layerManager.dli[3]" "ControlsLayer.id";
 connectAttr "blinn1SG.pa" ":renderPartition.st" -na;
 connectAttr "lambert2SG.pa" ":renderPartition.st" -na;
 connectAttr "lambert3SG.pa" ":renderPartition.st" -na;
@@ -13316,4 +13348,4 @@ connectAttr "groupId128.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId135.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId139.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId140.msg" ":initialShadingGroup.gn" -na;
-// End of RobotArm_rig02.ma
+// End of RobotArm_rig03.ma
